@@ -4,8 +4,25 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
 
   var desiredPassLen = prompt('What is the desired length of password?');
+  var lowercase = confirm('include lowercase in the password?');
+  var uppercase = confirm('include uppercase in the password?');
+  var scharacters = confirm('include special characters in the password?');
+  var finalCharset = ''
+  var charSet = 'abcdefghijklmnopqrstuvwxyz';
+  var sCharSet = "!\"#$%" + String.fromCharCode(38) + "'()*+,-./:;" + String.fromCharCode(60) + "=>?@[\\]^_`{|}~";
 
-  var password = generatePassword('abc', parseInt(desiredPassLen));
+
+  if (lowercase) {
+    finalCharset += charSet
+  }
+  if (uppercase) {
+    finalCharset += charSet.toUpperCase();
+  }
+  if (scharacters) {
+    finalCharset += sCharSet
+  }
+
+  var password = generatePassword(finalCharset, parseInt(desiredPassLen));
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -14,10 +31,10 @@ function writePassword() {
 // Write password to the #password input
 function generatePassword(charset, len) {
   //alert('generatePassword');
-	var result = "";
-	for (var i = 0; i < len; i++)
-		result += charset[randomInt(charset.length)];
-	return result;
+  var result = "";
+  for (var i = 0; i < len; i++)
+    result += charset[randomInt(charset.length)];
+  return result;
 }
 
 // Returns a random integer in the range [0, n) using a variety of methods.
