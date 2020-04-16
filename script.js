@@ -30,7 +30,6 @@ function writePassword() {
 }
 // Write password to the #password input
 function generatePassword(charset, len) {
-  //alert('generatePassword');
   var result = "";
   for (var i = 0; i < len; i++)
     result += charset[randomInt(charset.length)];
@@ -39,7 +38,7 @@ function generatePassword(charset, len) {
 
 // Returns a random integer in the range [0, n) using a variety of methods.
 function randomInt(n) {
-  return Math.floor(Math.random() * n) + 0; // returns a random integer from 1 to 100
+  return Math.floor(Math.random() * n); // returns a random integer from 0 to length of char set
 }
 
 // Add event listener to generate button
