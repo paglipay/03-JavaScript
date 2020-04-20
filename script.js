@@ -4,14 +4,18 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
 
   var desiredPassLen = prompt('What is the desired length of password?');
+  var numeric = confirm('include numeric in the password?');
   var lowercase = confirm('include lowercase in the password?');
   var uppercase = confirm('include uppercase in the password?');
   var scharacters = confirm('include special characters in the password?');
   var finalCharset = ''
   var charSet = 'abcdefghijklmnopqrstuvwxyz';
   var sCharSet = "!\"#$%" + String.fromCharCode(38) + "'()*+,-./:;" + String.fromCharCode(60) + "=>?@[\\]^_`{|}~";
+  var numericSet = '0123456789';
 
-
+  if (numeric) {
+    finalCharset += numericSet
+  }
   if (lowercase) {
     finalCharset += charSet
   }
