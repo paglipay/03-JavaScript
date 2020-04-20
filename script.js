@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
 
   var desiredPassLen = 0;
-  while ((desiredPassLen > 7 && desiredPassLen < 129) == false) {
+  while (desiredPassLen < 8 || desiredPassLen > 128) {
     desiredPassLen = prompt('What is the desired length of password? Choose a length of at least 8 characters and no more than 128 characters.');
   }
 
